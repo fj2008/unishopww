@@ -56,5 +56,5 @@
 		</form>
 	</main>
 </div>
-
+<script src="/js/joinForm.js"></script>
 <%@ include file="../layout/footer.jsp"%>

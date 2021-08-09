@@ -60,5 +60,5 @@
 
 	</main>
 </div>
-
+<script src="/js/findUser.js"></script>
 <%@ include file="../layout/footer.jsp"%>

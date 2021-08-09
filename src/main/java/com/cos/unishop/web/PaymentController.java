@@ -1,5 +1,8 @@
 package com.cos.unishop.web;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -35,6 +38,17 @@ public class PaymentController {
 		User principal =(User) session.getAttribute("principal");
 		
 		Buy buy = new Buy();
+		
+		//구매 일자 저장
+		SimpleDateFormat format2 = new SimpleDateFormat ( "yyyy년 MM월dd일 HH시mm분ss초");
+		Date time = new Date();
+				
+		String time1 = format2.format(time);
+						
+		System.out.println(time1);
+		
+		buy.setPaymenttime(time1);
+		
 		
 		payment.setUser(principal);
 		System.out.println("유저저장완료");

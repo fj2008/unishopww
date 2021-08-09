@@ -488,7 +488,7 @@ function goPaymentAPI(id,productname,image,detail,price,size,category,gender,ema
     IMP.request_pay({
         pg: "html5_inicis",//이니시스 웹표준 결제창
         pay_method: "card",//결제방법
-        merchant_uid: "123444",//주문번호
+        merchant_uid: "6564654",//주문번호
         name: productname,//상품명
         amount: price,//가격
         buyer_email: email,//이메일

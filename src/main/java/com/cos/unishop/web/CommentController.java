@@ -10,7 +10,12 @@ import java.util.UUID;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.unishop.domain.buy.BuyRepository;
 import com.cos.unishop.domain.comment.Comment;
@@ -21,6 +26,7 @@ import com.cos.unishop.domain.product.ProductRepository;
 import com.cos.unishop.domain.user.User;
 import com.cos.unishop.domain.user.UserRepository;
 import com.cos.unishop.utils.MyPath;
+import com.cos.unishop.utils.Script;
 
 import lombok.RequiredArgsConstructor;
 
@@ -83,5 +89,78 @@ public class CommentController {
 		
 		return "redirect:/product/"+product.getId();
 	}
+	
+	@PostMapping("/commentUpdate")
+	public @ResponseBody String commentUpdate( @RequestBody CommentUpdateDto commentUpdateDto) {
+		
+		Comment commentEntity = commentRepository.findById(commentUpdateDto.getId()).get();
+		Comment comment = new Comment();
+		//수정일자
+		
+		SimpleDateFormat format2 = new SimpleDateFormat ( "yyyy년 MM월dd일 HH시mm분ss초");
+		Date time = new Date();
+				
+		String time1 = format2.format(time);
+						
+		System.out.println(time1);
+		comment.setRegistrationtime(time1);
+		System.out.println("수정일자 저장완료");
+		//수정한 유저 user_id
+		User principal =(User) session.getAttribute("principal");
+		comment.setUser(principal);
+		System.out.println("유저 수정완료");
+		//수정한 post_id
+
+		Product product = productRepository.findById(commentEntity.getProduct().getId()).get();
+		comment.setProduct(product);
+		System.out.println("상품 정보 저장완료");
+		
+		
+		//수정한 이미지
+	UUID uuid = UUID.randomUUID();
+		
+		String imageFileName = uuid + "_"+commentUpdateDto.getImage().getOriginalFilename();
+		System.out.println(imageFileName);
+		Path imagePath = Paths.get(MyPath.IMAGEPATH + imageFileName);
+		
+		try {
+			Files.write(imagePath, commentUpdateDto.getImage().getBytes());
+			comment.setImage(imageFileName);
+			System.out.println("이미지 저장완료");
+			comment.setColorcs(commentUpdateDto.getColorcs());
+			comment.setProductcs(commentUpdateDto.getProductcs());
+			comment.setScore(commentUpdateDto.getScore());
+			comment.setSizecs(commentUpdateDto.getSizecs());
+			System.out.println("나머지 저장완료");
+			
+			commentRepository.save(comment);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		return "ok";
+		
+	}
+	
+	@DeleteMapping("/comment/{id}")
+	public @ResponseBody String commentDelete(@PathVariable int id) {
+		User principal =(User) session.getAttribute("principal");
+		int userId = principal.getId();
+		Comment comment = commentRepository.findById(id).get();
+		
+		if(userId == comment.getUser().getId()) {
+			
+			commentRepository.deleteById(id);
+			return "ok";
+		}else {
+			return Script.href("/", "실패");
+			
+		}
+		
+	}
+	
+	
 	
 }
