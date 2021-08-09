@@ -1,0 +1,99 @@
+/*         어드민, 마이 페이지 hr */
+#hr {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+/* 		어드민 섹션 */
+.admin-section {
+	
+	margin-left: 180px;
+	width: 70%;
+}
+
+/* 		여기는 admin main overview 요소입니다 */
+.contents>div>img {
+	display: block;
+	height: 100px;
+	width: 100px;
+}
+
+.contents {
+	display: flex;
+	flex-flow: column;
+	width: 70%;
+	align-items: center;
+	width: 150px;
+}
+
+.contents>hr {
+	display: block;
+	width: 80%;
+}
+
+.contents>p {
+	display: inline-block;
+	width: auto;
+}
+
+/*         어드민에서 오버뷰 밑에 있은 커다란 div입니다 */
+.contents-container {
+	display: inline-block;
+	justify-content: space-between;
+	width: 95%;
+	margin-left: 70px;
+}
+/*         어드민 메인 페이지의 h2 width입니다 */
+.section>div>#h2 {
+	width: 1200px;
+}
+
+
+/* 어드민 프로덕트 메인입니다 */
+main {
+	margin-top: 30px;
+	
+/* 	적용도 어짜피 안되서 주석처리했습니다 */
+/* 	height: 1200px; */
+/* 	max-height: 1400px; */
+}
+
+/* 어드민 등록 페이지입니다 */
+.register {
+	display: flex;
+	width: 600px;
+	height: 600px;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: rgb(194, 194, 194);
+}
+
+.input-wrap {
+	display: flex;
+	flex: 4;
+	width: 400px;
+	margin: 10px;
+}
+
+.input-parent {
+	display: flex;
+	justify-content: space-between;
+}
+
+.input-parent>h4 {
+	display: flex;
+	font-size: 16px;
+	flex: 1;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 6px;
+}
+
+.sex {
+	display: flex;
+	flex: 1;
+	justify-content: space-between;
+}

@@ -1,0 +1,105 @@
+/* body {
+  background-color: rgb(248, 248, 248);
+} */
+
+/* 메인 전체 박스 */
+.main-box {
+  display: flex;
+  flex-flow: column;
+
+  width: 1280px;
+  height: 2000px;
+  margin: 0 auto;
+  margin-top: 50px;
+  /* background-color: antiquewhite; */
+
+  /* border-color: rgb(194, 194, 194);
+  border-style: solid;
+  border-width: 1px;
+  box-sizing: border-box; */
+}
+
+/* 상단 이미지와 정보 그리고 버튼 */
+.top {
+  display: flex;
+  width: 1280px;
+  align-items: center;
+  justify-content: center;
+}
+
+.information {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  /* justify-content: center; */
+  flex: 1;
+  border-color: rgb(194, 194, 194);
+  border-style: solid;
+  border-width: 1px;
+  box-sizing: border-box;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  /* width: 20px; */
+}
+.information > h3{
+  display: flex;
+  flex: 4;
+  justify-content: center;
+  align-items: center;
+}
+
+.information > p
+ {
+  display: flex;
+  flex: 1;
+  padding: 0px;
+  /* height: 0px; */
+  align-items: center;
+  justify-content: center;
+}
+/* 이미지 */
+.product-img {
+  display: flex;
+  justify-content: center;
+  flex: 4;
+  /* height: 1280px; */
+  /* width: 960px; */
+  margin: 0 auto;
+  /* background-color: beige; */
+}
+
+/* 버튼 */
+.button-group {
+  display: flex;
+  flex: 1;
+  flex-flow: column;
+  align-items: center;
+  padding: 15px;
+  /* width: 200px; */
+  margin: 0 auto;
+}
+
+.button-wrap {
+  margin-top: 30px;
+  display: flex;
+  width: 200px;
+}
+
+/* 고객 상품평 박스 */
+.member-comments-box {
+  width: 1280px;
+  height: 1000px;
+  /* background-color: antiquewhite; */
+  margin: 0 auto;
+  margin-top: 50px;
+  /* border-color: rgb(194, 194, 194);
+  border-style: solid;
+  border-width: 1px;
+  box-sizing: border-box; */
+}
+
+.input-comments {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+}

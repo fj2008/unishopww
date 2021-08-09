@@ -1,0 +1,169 @@
+.main {
+  margin-top: 100px;
+  height: 6000px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebars {
+  display: flex;
+  flex: 1;
+}
+
+.contents-container {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  width: 95%;
+  margin-left: 70px;
+}
+.button {
+  width: 30px;
+  height: 20px;
+}
+/* #delete-button{
+    width: 50px;
+    height: 20px;
+} */
+
+.delete-button {
+  width: 60px;
+  height: 30px;
+}
+
+/* bucket 박스와 title의 위치 관계입니다 */
+.title {
+}
+/* 테이블 row의 th 값 정렬입니다 */
+.th-align {
+  text-align: center;
+}
+
+/* 테이블 width 크기 */
+.table {
+  width: 1000px;
+}
+
+/* 테이블에서 판매가, 수량, 합계, 삭제버튼 align입니다 */
+/* .info-align {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+} */
+.info-align-box {
+  display: flex;
+  height: 100px;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+/* 상품정보 미니 박스 입니다 */
+.product-info-box {
+  display: flex;
+  width: 400px;
+
+  border: 0px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
+  /* padding-right: 200px; */
+}
+/* 상품정보 이미지입니다 */
+.minibox-img {
+  display: flex;
+  width: 100px;
+  height: 100px;
+  flex: 2;
+}
+/* 상품정보 입니다 */
+.product-inforamtion {
+  display: flex;
+  width: 150px;
+  height: 100px;
+  flex: 3;
+  align-items: center;
+}
+
+.product-size {
+  flex: 1;
+}
+
+.product-button {
+  flex: 3;
+}
+
+/* 상품정보에서 수량 박스입니다 */
+.up-and-down {
+  display: flex;
+  flex-flow: column;
+}
+.num-wrap {
+  width: 30px;
+  text-align: center;
+}
+/* 상품정보에서 합계 박스입니다 */
+.all-count {
+  width: 70px;
+  text-align: center;
+}
+
+/* 전체를 체크하는 체크박스 입니다*/
+.checkbox-area {
+  height: 40px;
+}
+
+.main-box {
+  display: flex;
+  margin: 0 auto;
+  /* 높이 설정 해줘야함 안 커지는데 이유를 모르겟음 */
+  min-height: 2000px;
+  flex-flow: column;
+  width: 80%;
+  /* 아래의 주석 넣지 말자 개판된다 */
+  align-items: center;
+  justify-content: center;
+}
+
+/* 장바구니에서 들고온 큰 섹션입니다 */
+/* 나중에 payment-section으로 class 변경해줘야합니다 */
+.payment-section {
+  /* margin-top: 500px; */
+  display: flex;
+  flex: 1;
+  flex-flow: column;
+  width: 80%;
+  /* padding-right: 30px;
+  margin-right: 40px; */
+
+  /* width: 30%; */
+}
+
+/* 결제 박스 section css입니다 */
+.payment-box {
+  display: flex;
+  /* margin-top: 10px; */
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  /* width: 30%; */
+  flex: 3;
+  width: 80%;
+}
+
+/* body {
+  height: 2000px;
+} */
+
+/* bucket-box입니다 */
+/* 나중에 class이름을 변경해줘야합니다  */
+.bucket-box {
+  display: flex;
+  /* margin: 0 auto; */
+  justify-content: center;
+  /* width: 1000px; */
+}
+
+/* 오른쪽으로 이동 */

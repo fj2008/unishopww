@@ -1,0 +1,50 @@
+@charset "UTF-8";
+/* 인덱스 메인 요소입니다 */
+.main-top {
+	position: relative;
+	padding: 16px 0px;
+	width: 1200px;
+	margin: 0px auto;
+}
+/* 인덱스 메인 요소입니다 */
+.main-content {
+	display: flex;
+	padding: 16px 0px;
+	width: 1200px;
+	margin: 0px auto;
+}
+
+/* 메인 가르는 요소 정렬! */
+hr {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+/* 인덱스 메인 요소입니다 */
+.new-main {
+	display: flex;
+	margin: 0 auto;
+	padding: 16px 0px;
+	width: 1200px;
+}
+
+.index-content-img {
+	margin: 15px;
+	display: flex;
+	justify-content: space-between;
+	height: 500px;
+	width: 400px;
+}
+/* 인덱스 메인 요소입니다 */
+
+/* 인덱스에 들어가는 것들 */
+p, h1, h2, h3 {
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+	font-family: 'UniqloProRegular', 'UniqloProLight', 'UniqloProBold',
+		'NanumSquare', sans-serif;
+	padding: 20px 0px;
+/* 	width: 1200px; */
+/* 	width:70%; */
+}

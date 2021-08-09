@@ -1,0 +1,41 @@
+@charset "UTF-8";
+/* 로그인 회원가입 요소입니다 */
+/* 로그인, findID, findPW 요소입니다 */
+.main {
+	margin-top: 100px;
+	height: 566px;
+}
+/* 로그인, findID, findPW 요소입니다 */
+.form-signin {
+	width: 100%;
+	max-width: 330px;
+	padding: 15px;
+	margin: auto;
+}
+
+
+/* joinForm.jsp에서 main입니다  */
+/* 회원가입 요소입니다 */
+#main {
+	margin-top: 4px;
+	margin-bottom: 0px;
+	height: 666px;
+}
+/* joinForm.jsp에서 signin입니다  */
+#form-signin {
+	width: 100%;
+	max-width: 600px;
+	padding: 15px;
+	margin: 0 auto;
+}
+
+/*       아이디, 비밀번호 찾기 요소입니다 */
+/* 아이디 ,비밀번호 찾기, 인증번호 받기 요소입니다 */
+.find {
+	display: flex;
+	justify-content: space-between;
+	font-size: 12px;
+	margin: 8px;
+	padding: 3px;
+}
+

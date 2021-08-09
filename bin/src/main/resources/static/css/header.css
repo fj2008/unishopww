@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+.d-flex {
+	width: 400px;
+}
+
+.header-top {
+	width: 1200px;
+	width: 100%;
+}
+
+/* 헤더 다른버전 삭제해도 될듯 */
+.header {
+	position: relative;
+	padding: 0px;
+	width: 100%;
+	margin: 0px auto;
+}
+
+/* 이게 진짜 */
+.header {
+	position: relative;
+	padding: 0px;
+	margin: 0px auto;
+}
+
+.dropdown-menu {
+	height: auto;
+	position: relative;
+	width: 460px;
+	top: 78px;
+	left: 50%;
+	font-size: 12px;
+	line-height: 1.3em;
+	background-color: white;
+}
+
+.dropdown-in {
+	display: inline-block;
+	margin: 12px;
+}
+
+.dropdown-item-text {
+	font-weight: bold !important;
+	font-size: 13px;
+	margin-bottom: 4px;
+}
+
+.dropdown-item {
+	font-family: '맑은 고딕', 'Malgun Gothic', 돋움;
+}
+
+/* 아이콘 다른버전 */
+/* 로그인 했을 때 아이콘 크기 */
+.icon {
+	display: flex;
+	width: 100px;
+	justify-content: space-between;
+}
+/* .icon { */
+/* 	display: flex; */
+/* 	width: 70px; */
+/* 	justify-content: space-between; */
+/* } */
+
+
+/* 로그인 안했을 때 아이콘 크기 */
+/* .icon { */
+/* 	display: flex; */
+/* 	width: 30px; */
+/* 	jusstify-content: space-between; */
+/* } */
+
+.logo {
+	height: 60px;
+}
+
+/* 		모든 페이지에 들어가는 폰트 */
+p, h1, h2, h3 {
+	display: block;
+	margin: 0 auto;
+	font-family: 'UniqloProRegular', 'UniqloProLight', 'UniqloProBold',
+		'NanumSquare', sans-serif;
+	padding: 20px 0px;
+/* 	/* width: 1200px; */
+}
