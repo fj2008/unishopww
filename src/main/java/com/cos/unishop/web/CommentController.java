@@ -90,11 +90,13 @@ public class CommentController {
 		return "redirect:/product/"+product.getId();
 	}
 	
-	@PostMapping("/commentUpdate")
-	public @ResponseBody String commentUpdate( @RequestBody CommentUpdateDto commentUpdateDto) {
+	//상품평 수정하는 컨트롤러
+	@PutMapping("/commentUpdate")
+	public @ResponseBody String commentUpdate(CommentUpdateDto commentUpdateDto) {
 		
 		Comment commentEntity = commentRepository.findById(commentUpdateDto.getId()).get();
-		Comment comment = new Comment();
+		System.out.println(commentEntity);
+		
 		//수정일자
 		
 		SimpleDateFormat format2 = new SimpleDateFormat ( "yyyy년 MM월dd일 HH시mm분ss초");
@@ -103,16 +105,16 @@ public class CommentController {
 		String time1 = format2.format(time);
 						
 		System.out.println(time1);
-		comment.setRegistrationtime(time1);
+		commentEntity.setRegistrationtime(time1);
 		System.out.println("수정일자 저장완료");
 		//수정한 유저 user_id
 		User principal =(User) session.getAttribute("principal");
-		comment.setUser(principal);
-		System.out.println("유저 수정완료");
+		commentEntity.setUser(principal);
+		System.out.println("유저정보"+principal);
 		//수정한 post_id
 
 		Product product = productRepository.findById(commentEntity.getProduct().getId()).get();
-		comment.setProduct(product);
+		commentEntity.setProduct(product);
 		System.out.println("상품 정보 저장완료");
 		
 		
@@ -125,15 +127,15 @@ public class CommentController {
 		
 		try {
 			Files.write(imagePath, commentUpdateDto.getImage().getBytes());
-			comment.setImage(imageFileName);
+			commentEntity.setImage(imageFileName);
 			System.out.println("이미지 저장완료");
-			comment.setColorcs(commentUpdateDto.getColorcs());
-			comment.setProductcs(commentUpdateDto.getProductcs());
-			comment.setScore(commentUpdateDto.getScore());
-			comment.setSizecs(commentUpdateDto.getSizecs());
+			commentEntity.setColorcs(commentUpdateDto.getColorcs());
+			commentEntity.setProductcs(commentUpdateDto.getProductcs());
+			commentEntity.setScore(commentUpdateDto.getScore());
+			commentEntity.setSizecs(commentUpdateDto.getSizecs());
 			System.out.println("나머지 저장완료");
 			
-			commentRepository.save(comment);
+			commentRepository.save(commentEntity);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -149,7 +151,8 @@ public class CommentController {
 		User principal =(User) session.getAttribute("principal");
 		int userId = principal.getId();
 		Comment comment = commentRepository.findById(id).get();
-		
+		//로그인된 유저와 해당 코멘트에 저장되있는 user_id의 pk가 같은지 확인한다
+		//아무나 삭제하면 안되기 때문
 		if(userId == comment.getUser().getId()) {
 			
 			commentRepository.deleteById(id);

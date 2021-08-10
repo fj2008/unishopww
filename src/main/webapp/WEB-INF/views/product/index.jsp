@@ -67,6 +67,7 @@
 <div class="new-main">
 
 <c:forEach var="products" items="${productsEntity}">
+
 	<a href="/product/productPage">
 		<div class="index-content-img">
 			<img
@@ -75,6 +76,7 @@
 
 		</div>
 	</a>
+	
 </c:forEach>	
 	
 	<div class="index-content-img">

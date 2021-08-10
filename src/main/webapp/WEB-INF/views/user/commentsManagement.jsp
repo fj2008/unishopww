@@ -115,7 +115,7 @@
 
 						<div style="display: flex;">
 
-							<tr>
+							<tr id="reply-${comments.id}">
 								<th scope="row">${comments.id}</th>
 								<td><img src="/upload/${comments.image}" /></td>
 								<td>${comments.score}</td>
@@ -129,15 +129,15 @@
 								<!-- 					해당유저만 삭제 수정가능하도록  -->
 								<c:if test="${sessionScope.principal.id == comments.user.id}">
 									<td>
-										<form action="/commentDelete"
+										<form
 											onsubmit="commentDelete(${comments.id})">
-											<button type="button" class="btn btn-danger">삭제</button>
+											<button type="submit" class="btn btn-danger">삭제</button>
 										</form>
-									
-											<button type="button" class="btn btn-primary"
-												data-bs-toggle="modal" data-bs-target="#exampleModal"
-												style="background-color: #f5f5f5; border: #f8f9fa; color: #383838;" >
-												수정하기</button>
+
+										<button type="button" class="btn btn-primary"
+											data-bs-toggle="modal" data-bs-target="#exampleModal"
+											style="background-color: #f5f5f5; border: #f8f9fa; color: #383838;">
+											수정하기</button>
 									</td>
 
 								</c:if>
@@ -146,9 +146,6 @@
 
 
 						</div>
-
-
-					
 				</tbody>
 			</table>
 			<section class="member-comments-box">
@@ -172,118 +169,99 @@
 								</div>
 								<div class="modal-body">
 									<!-- 			모달바디 시작 -->
-									<div class="modal-content-1">
+									<div class="register">
 										<!-- 여기에 폼있어요! -->
-									<form onsubmit="commentUpdate(${comments.id})" enctype="multipart/form-data">
-										<!-- 			상품코드 -->
-										<div>
-											<div class="input-parent">
+										<form onsubmit="commentUpdate()" id="my-form">
+											<!-- 			상품코드 -->
 
-												<div class="input-wrap">
-													<div class="input-group mb-3">
-														<span class="input-group-text"
-															id="inputGroup-sizing-default"></span> <input
-															type="number" class="form-control"
-															aria-label="Sizing example input"
-															aria-describedby="inputGroup-sizing-default"
-															value="${comments.id}" readonly="readonly"
-															name="id" id="id">
+											<input type="number" name="id" value="${comments.id}"
+												readonly="readonly">
+
+											<div>
+												<div class="input-parent">
+													<h4>이미지 등록</h4>
+													<div class="input-wrap">
+														<div class="input-group mb-3">
+
+															<input type="file" class="form-control" id="image"
+																name="image">
+
+														</div>
 													</div>
 												</div>
 											</div>
-										</div>
 
-										<div class="input-parent">
-											<h4>상품 이름</h4>
-											<div class="input-wrap">
-												<div class="input-group mb-3">
-													${comments.product.productname}</div>
-											</div>
-											<section class="product-img">
-
-												<img id="img1" src="/upload/${comments.image}"
-													class="rounded float" alt="...">
-
-
-											</section>
-										</div>
-										<div>
-											<div class="input-parent">
-												<h4>이미지 수정</h4>
-												<div class="input-wrap">
-													<div class="input-group mb-3">
-
-														<input type="file" class="form-control" id="image"
-															name="image">
-
+											<div>
+												<div class="input-parent">
+													<h4>만족도 점수</h4>
+													<div class="input-wrap">
+														<div class="input-group mb-3">
+															<span class="input-group-text"
+																id="inputGroup-sizing-default">Default</span> <input
+																id="score" type="text" class="form-control"
+																aria-label="Sizing example input"
+																aria-describedby="inputGroup-sizing-default"
+																name="score">
+														</div>
 													</div>
 												</div>
 											</div>
-										</div>
 
-										<div>
-											<div class="input-parent">
-												<h4>만족도 점수</h4>
-												<div class="input-wrap">
-													<div class="input-group mb-3">
-														<span class="input-group-text" id="score">Default</span> <input
-															type="text" class="form-control"
-															aria-label="Sizing example input"
-															aria-describedby="inputGroup-sizing-default" name="score">
+											<div>
+												<div class="input-parent">
+													<h4>사이즈 만족도</h4>
+													<div class="input-wrap">
+														<div class="input-group mb-3">
+															<!-- <span class="input-group-text" id="inputGroup-sizing-default">Default</span> -->
+															<input type="text" id="sizecs" class="form-control"
+																aria-label="Sizing example input"
+																aria-describedby="inputGroup-sizing-default"
+																name="sizecs">
+														</div>
 													</div>
 												</div>
 											</div>
-										</div>
+											<div>
+												<div class="input-parent">
+													<h4>색감 만족도</h4>
+													<div class="input-wrap">
+														<div class="input-group mb-3">
+															<!-- <span class="input-group-text" id="inputGroup-sizing-default">Default</span> -->
+															<input type="text" id="colorcs" class="form-control"
+																aria-label="Sizing example input"
+																aria-describedby="inputGroup-sizing-default"
+																name="colorcs">
+														</div>
+													</div>
+												</div>
+											</div>
+											<div>
+												<div class="input-parent">
+													<h4>상품평</h4>
+													<div class="input-wrap">
+														<div class="input-group mb-3">
+															<!-- <span class="input-group-text" id="inputGroup-sizing-default">Default</span> -->
+															<input type="text" id="productcs" class="form-control"
+																aria-label="Sizing example input"
+																aria-describedby="inputGroup-sizing-default"
+																name="productcs">
+														</div>
+													</div>
+												</div>
+											</div>
 
-										<div>
-											<div class="input-parent">
-												<h4>사이즈 만족도</h4>
-												<div class="input-wrap">
-													<div class="input-group mb-3">
-														<!-- <span class="input-group-text" id="inputGroup-sizing-default">Default</span> -->
-														<input type="text" class="form-control"
-															aria-label="Sizing example input"
-															aria-describedby="inputGroup-sizing-default" id="sizecs"
-															name="sizecs">
-													</div>
-												</div>
-											</div>
-										</div>
-										<div>
-											<div class="input-parent">
-												<h4>색감 만족도</h4>
-												<div class="input-wrap">
-													<div class="input-group mb-3">
-														<!-- <span class="input-group-text" id="inputGroup-sizing-default">Default</span> -->
-														<input type="text" class="form-control"
-															aria-label="Sizing example input"
-															aria-describedby="inputGroup-sizing-default" id="colorcs"
-															name="colorcs">
-													</div>
-												</div>
-											</div>
-										</div>
-										<div>
-											<div class="input-parent">
-												<h4>상품평</h4>
-												<div class="input-wrap">
-													<div class="input-group mb-3">
-														<!-- <span class="input-group-text" id="inputGroup-sizing-default">Default</span> -->
-														<input type="text" class="form-control"
-															aria-label="Sizing example input"
-															aria-describedby="inputGroup-sizing-default"
-															id="productcs" name="productcs">
-													</div>
-												</div>
-											</div>
-										</div>
 
-								<!-- 모달바디끝 -->
+
+
+
+
+
+											<!-- 모달바디끝 -->
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary"
 											data-bs-dismiss="modal">Close</button>
-										<button type="submit" class="btn btn-primary" >Save
+										<button type="submit" class="btn btn-primary">Save
 											changes</button>
 									</div>
 								</div>
@@ -291,13 +269,12 @@
 						</div>
 					</div>
 					</form>
-
 					<!-- 댓글 테이블 -->
 					<!-- DB에서 가져와서 던져줌 -->
 			</section>
 		</section>
 		<!-- comments box end -->
-</c:forEach>
+		</c:forEach>
 
 
 	</section>
