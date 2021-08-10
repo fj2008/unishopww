@@ -1,5 +1,62 @@
 # unishop ~
 
+###체크박스 사용
+```
+function selectProductDelete(userId) {
+
+	if (confirm("선택하신 상품을 삭제 하시겠습니까?") == true) {
+		$('input:checkbox[name="id"]').each(
+			async function checked() {
+				if (this.checked) {
+					
+					// 체크 된 것들 each로 각각의 value 값을 던져주게 만든다
+
+					// alert는 확인용!
+					//		            alert(this.value); 
+					let id = this.value;
+					// fetch로 value에 담으면 될듯!
+					let postDto = {
+						id: id
+					};
+
+					// 저장만 하기 때문에 response로 String을 안받았음
+					// 왜냐하면 여러개를 던져주기 때문에!
+					await fetch("/bucket/delete", {
+						method: "delete",
+						body: JSON.stringify(postDto),
+						headers: {
+							"Content-Type": "application/json;charset=utf-8"
+						}
+					});
+
+					console.log(id + " : id 번째 물건 삭제되었어요!");
+				}
+
+			});
+			console.log ("userId 나오나요? : "+ userId);
+			if(userId != null){
+				console.log("네 나옵니다!!" + userId);
+			}
+		location.href = "/bucket/" + userId;
+		alert("상품이 삭제되었습니다.");
+	} else {
+		return;
+	}
+}
+
+
+//location.reload();
+//}
+```
+
+
+###관리자아이디 insert
+```
+INSERT INTO admin_user(username, PASSWORD ,email ,address ,phonenumber ,NAME ,role)VALUES('ssar','1234','and@naver.com','부산','01011111111','이름','ADMIN');
+
+```
+
+
 ###결제 리스트 구현시 db모순을 해결했던 방법
 ```
 결제 데이터를 fetch요청으로 저장하는것 까지 완료하고 이제 구메리스트에 해당 회원의 결제정보를 마이페이지에서 관리하게하기위해서 저장된 데이터를 뿌리려고 했을때

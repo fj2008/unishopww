@@ -109,7 +109,7 @@
                 <!-- 체크박스 -->
                 <div class="info-align-box">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="delete" id="flexCheckDefault">
+                    <input class="form-check-input" type="checkbox" name="id" value="${buyEntity.id}" id="${buyEntity.id}">
                     <label class="form-check-label" for="flexCheckDefault">
                     
                     </label>
