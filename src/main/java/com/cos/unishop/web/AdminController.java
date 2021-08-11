@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.unishop.domain.admin.AdminUser;
@@ -22,7 +23,7 @@ import com.cos.unishop.domain.admin.AdminUserRepository;
 import com.cos.unishop.domain.buy.Buy;
 import com.cos.unishop.domain.buy.BuyRepository;
 import com.cos.unishop.domain.product.Product;
-import com.cos.unishop.domain.product.ProductDto;
+
 import com.cos.unishop.domain.product.ProductRepository;
 import com.cos.unishop.domain.user.User;
 import com.cos.unishop.domain.user.UserRepository;
@@ -96,14 +97,14 @@ public class AdminController {
 		return "admin/adminUserLog";
 	}
 
-	// 관리자 상품업데이트컨트롤러
+	// 관리자 상품등록컨트롤러
 	@PostMapping("/admin/update")
-	public String productUpdate(ProductDto productDto) {
+	public String product(ProductDto productDto) {
 
 		UUID uuid = UUID.randomUUID();
 		Product product = new Product();
 
-		User principal = (User) session.getAttribute("principal");
+		
 
 		String imageFileName = uuid + "_" + productDto.getImage().getOriginalFilename();
 
@@ -119,8 +120,7 @@ public class AdminController {
 			product.setSize(productDto.getSize());
 			product.setGender(productDto.getGender());
 			product.setCategory(productDto.getCategory());
-			product.setUser(principal);
-
+			
 			productRepository.save(product);
 
 		} catch (Exception e) {
@@ -146,4 +146,47 @@ public class AdminController {
 		return"admin/adminProductManagement";
 	}
 	
+	//상품 수정하는 컨트롤러
+	@PutMapping("/admin/productUpdate")
+	public @ResponseBody String productUpdate(ProductUpdateDto productUpdateDto) {
+
+		UUID uuid = UUID.randomUUID();
+		Product productEntity = productRepository.findById(productUpdateDto.getProductId()).get();
+		System.out.println("상품 찾았다");
+		
+
+		String imageFileName = uuid + "_" + productUpdateDto.getImage().getOriginalFilename();
+
+		Path imagePath = Paths.get(MyPath.IMAGEPATH + imageFileName);
+
+		try {
+			Files.write(imagePath, productUpdateDto.getImage().getBytes());
+
+			productEntity.setProductname(productUpdateDto.getProductname());
+			productEntity.setImage(imageFileName);
+			productEntity.setDetail(productUpdateDto.getDetail());
+			productEntity.setPrice(productUpdateDto.getPrice());
+			productEntity.setSize(productUpdateDto.getSize());
+			productEntity.setGender(productUpdateDto.getGender());
+			productEntity.setCategory(productUpdateDto.getCategory());
+			System.out.println("상품수정완료");
+
+			productRepository.save(productEntity);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return "ok";
+	}
+	
+	//상품 삭제 하는 컨트롤러
+	@DeleteMapping("/admin/productDelete/{id}")
+	public @ResponseBody String productDelete(@PathVariable int id) {
+		System.out.println("상품정보"+id);
+		productRepository.deleteById(id);
+		System.out.println("상품 삭제 완료");
+		return "ok";
+		
+	}
 }

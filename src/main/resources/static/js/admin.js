@@ -41,3 +41,40 @@ function deleteCheck() {
 
 	}//end else
 }
+
+
+
+//상품 수정 요청하는 자바스크립트
+async function productUpdate(){
+	event.preventDefault();
+	console.log("실행됨?")
+
+	let form = document.querySelector("#my-form");
+	const formData = new FormData(form);
+
+	let response =await fetch("/admin/productUpdate",{
+		method:"put",
+		body:formData,
+		headers: {}
+	});
+	
+	let parseResponse =await response.text();//json()or text()
+	console.log(parseResponse);
+	
+	if(parseResponse ==="ok"){
+		location.reload();
+	}
+}
+
+//상품 삭제 요청하는 자바스크립트
+async function productDelete(id){
+	console.log(id);
+	let response = await fetch("/admin/productDelete/"+id,{
+		method:"delete"
+	});
+	let parseResponse = await response.text();
+	console.log(parseResponse);
+	if(parseResponse ==="ok"){
+		location.reload();
+	}
+}
