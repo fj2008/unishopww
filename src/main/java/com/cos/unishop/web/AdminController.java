@@ -11,7 +11,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -128,5 +130,20 @@ public class AdminController {
 		return "redirect:/admin/productRegister";
 	}
 	
-
+	//회원로그 삭제 하는 컨트롤러
+	@DeleteMapping("/admin/{id}")
+	public @ResponseBody void deleteLog(@PathVariable int id) {
+		System.out.println(id);
+		
+		buyRepository.deleteById(id);
+	
+	}
+	//상품 관리페이지로 가는 컨트롤러
+	@GetMapping("/admin/productManagement")
+	public String productManagement(Model model) {
+		model.addAttribute("productsEntity", productRepository.findAll());
+		
+		return"admin/adminProductManagement";
+	}
+	
 }

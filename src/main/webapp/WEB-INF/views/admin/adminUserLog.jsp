@@ -163,8 +163,8 @@
               </td>
 
             </tr>
-            </c:forEach>
-
+           
+</c:forEach>
            
           </tbody>
         </table>
@@ -178,19 +178,17 @@
                 <div>전체선택</div>
               </label>
             </div>
-            <button type="button" class="btn btn-danger">
+            <button type="button" onclick="deleteCheck()" class="btn btn-danger">
               배송완료
 
             </button>
           </div>
-          
+       
         </div>
+       
       </section>
-
-
-
-
-
-
     </main>
+       
+<script src="/js/admin.js"></script>
+    
 <%@ include file="../layout/footer.jsp"%>
